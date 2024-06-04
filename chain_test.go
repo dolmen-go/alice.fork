@@ -67,6 +67,9 @@ func TestThenFuncTreatsNilAsDefaultServeMux(t *testing.T) {
 	if New().ThenFunc(nil) != http.DefaultServeMux {
 		t.Error("ThenFunc does not treat nil as DefaultServeMux")
 	}
+	if New().ThenFunc(http.HandlerFunc(nil)) != http.DefaultServeMux {
+		t.Error("ThenFunc does not treat nil as DefaultServeMux")
+	}
 }
 
 func TestThenFuncConstructsHandlerFunc(t *testing.T) {
